@@ -1,4 +1,4 @@
-baseURL = "https://pdbartsch.gitlab.io"
+baseurl = "https://pdbartsch.github.io"
 languageCode = "en-us"
-title = "My New Hugo Site"
-
+title = "PDB Pages"
+theme = "hyde"
