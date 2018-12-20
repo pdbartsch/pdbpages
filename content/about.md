@@ -12,4 +12,4 @@ Paul Bartsch
 - Cleaning up and generalizing some of my work so it can be shared publicly rather than hidden away in private repos.
 
 #### What is this?
-Paul's github pages site
+Paul's github pages site.
