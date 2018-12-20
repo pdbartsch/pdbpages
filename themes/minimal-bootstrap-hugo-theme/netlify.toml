@@ -1,0 +1,11 @@
+[build]
+publish = "exampleSite/public"
+command = """hugo \
+  --source exampleSite \
+  --config exampleSite/config.toml \
+  --themesDir ../.. \
+  --theme repo \
+  --baseURL https://minimal-bootstrap-hugo-theme.netlify.com/"""
+
+[build.environment]
+HUGO_VERSION = "0.51"

@@ -1,17 +1,10 @@
-baseURL = "http://example.org/"
+baseURL = "https://example.com"
 languageCode = "en-us"
-title = "My New Hugo Site"
-theme = "minimal-bootstrap-hugo-theme"
-
-
+title = "Some Title"
 enableGitInfo = false
 
 [taxonomies]
   tag = "tags"
-
-pygmentsCodefences = true
-pygmentsCodefencesGuessSyntax = true
-pygmentsStyle = "pygments"
 
 [permalinks]
   post = "/:filename/"
@@ -43,18 +36,15 @@ pygmentsStyle = "pygments"
   name = "Posts"
   url = "/"
   weight = 1
-
   [[menu.nav]]
   name = "Tags"
   url = "/tags/"
   weight = 2
-
   [[menu.nav]]
   name = "About"
   url = "/about/"
   weight = 3
-
-#  [[menu.nav]]
-#  name = "RSS"
-#  url = "/index.xml"
-#  weight = 4
+  [[menu.nav]]
+  name = "RSS"
+  url = "/index.xml"
+  weight = 4
