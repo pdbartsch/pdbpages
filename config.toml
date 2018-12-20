@@ -1,4 +1,7 @@
-baseurl = "https://pdbartsch.github.io"
+baseurl = "pdbartsch.github.io/pdbpages"
 languageCode = "en-us"
 title = "PDB Pages"
 theme = "hyde"
+
+
+
