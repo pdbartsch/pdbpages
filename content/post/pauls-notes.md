@@ -1,12 +1,12 @@
 ---
-title: "pauls notes"
+title: "Notes to future me"
 date: 2018-12-20T12:27:11-08:00
 publishdate: 2018-12-20
 lastmod: 2018-12-20
 draft: false
 tags: ['meta','hugo','git']
 ---
-# Notes to future me
+
 ### I haven't updated this site in years, remind me:
 
 **Make a new post:**
@@ -34,3 +34,5 @@ tags: ['meta','hugo','git']
 - Done!
 
 Since the site code lives in one repo and the public folder deploys to another repo, make sure to push changes to the code repo as well.
+
+[More info on this minimal-bootstrap-hugo-theme](https://themes.gohugo.io/minimal-bootstrap-hugo-theme/)
