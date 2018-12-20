@@ -6,7 +6,8 @@ lastmod: 2018-12-20
 draft: false
 tags: ['meta','hugo','git']
 ---
-## I haven't updated this site in years, remind me:
+# Notes to future me
+### I haven't updated this site in years, remind me:
 
 **Make a new post:**
 
