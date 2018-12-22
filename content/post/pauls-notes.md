@@ -25,11 +25,10 @@ tags: ['meta','hugo','git']
 
 - remember you previously setup the submodule using [these instructions](https://gohugo.io/hosting-and-deployment/hosting-on-github/#step-by-step-instructions).
 
-- `hugo`
 
 **Deploy Site:**
 
-- double click deploy.sh bash script or simply type `deploy.sh`
+- execute deploy.sh bash script by simply typing `deploy.sh`
 
 - Done!
 
