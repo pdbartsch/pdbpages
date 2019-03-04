@@ -12,4 +12,4 @@ Paul Bartsch.  A Geographic Information Systems professional who grew tired of l
 - Wildfire threat modeling
 
 #### What is this?
-A site to post my notes on using python to manipulate, analyze, manage and organize geospatial data.
+A site to post my notes on using python to manipulate, analyze, manage and organize geospatial data.  Hopefully these notes help someone else but they are mostly meant to help me remember how to do that one thing I did 3 years ago.  
