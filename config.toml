@@ -30,7 +30,7 @@ pygmentsStyle = "pygments"
   customCodeStyle = true
   customBlockquoteStyle = true
   showPostSummary = false
-  googleAnalytics = "UA-123456789-1"
+  googleAnalytics = "UA-135562926-1" 
   cookieConsent = false
   includeBootstrapJs = false
 
