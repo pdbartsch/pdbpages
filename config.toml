@@ -1,6 +1,6 @@
-baseURL = "https://pdbartsch.github.io/"
+baseURL = "https://geopy.dev/"
 languageCode = "en-us"
-title = "My New Hugo Site"
+title = "Geospatial Python Developer"
 theme = "minimal-bootstrap-hugo-theme"
 
 
@@ -17,7 +17,7 @@ pygmentsStyle = "pygments"
   post = "/:filename/"
 
 [params]
-  description = "Some description"
+  description = "Geospatial Python Developer"
   contentBackgroundColor = "#fff"
   contentTextColor = "#212529"
   contentLinkColor = "#007bff"

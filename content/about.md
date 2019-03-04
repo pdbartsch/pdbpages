@@ -4,12 +4,12 @@ date = "2018-12-20"
 +++
 
 #### Who am I?
-Paul Bartsch
+Paul Bartsch.  A Geographic Information Systems professional who grew tired of looking for icons in GIS GUIs.  Currently automating as many repetitive tasks as possible.
 
 #### What am I working on now?
-- Automating geospatial work with python. Mainly using ArcPy for work stuff.
+- Automating geospatial work with python. Mainly using ArcPy and GeoPandas
 - Django site for locating and downloading construction drawings
-- Cleaning up and generalizing some of my work so it can be shared publicly rather than hidden away in private repos.
+- Wildfire threat modeling
 
 #### What is this?
-Paul's github pages site.
+A site to post my notes on using python to manipulate, analyze, manage and organize geospatial data.
