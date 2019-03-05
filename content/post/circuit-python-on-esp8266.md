@@ -63,4 +63,4 @@ while True:
 
 {{< /highlight >}}
 
-#### [Here are the pinouts for the Feather Huzzah ESP8266](https://learn.adafruit.com/assets/46249)
+#### [Here's a diagram of the pinouts for the Feather Huzzah ESP8266](https://learn.adafruit.com/assets/46249)
