@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hugo on Geospatial Python Developer</title>
+    <link>https://geopy.dev/tags/hugo/</link>
+    <description>Recent content in Hugo on Geospatial Python Developer</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 20 Dec 2018 12:27:11 -0800</lastBuildDate>
+    
+	<atom:link href="https://geopy.dev/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Notes to future me</title>
+      <link>https://geopy.dev/pauls-notes/</link>
+      <pubDate>Thu, 20 Dec 2018 12:27:11 -0800</pubDate>
+      
+      <guid>https://geopy.dev/pauls-notes/</guid>
+      <description>I haven&amp;rsquo;t updated this site in years, remind me: Make a new post:
+ hugo new post/pauls-notes.md
+ Update the posts metadata such as whether a draft and add tags
+  Run local server and include draft posts:
+ hugo server -D
+ then kill local server with Ctrl-C
+  Build site to github pages submodule:
+ remember you previously setup the submodule using these instructions.  Deploy Site:</description>
+    </item>
+    
+  </channel>
+</rss>

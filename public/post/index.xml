@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Geospatial Python Developer</title>
+    <link>https://geopy.dev/post/</link>
+    <description>Recent content in Posts on Geospatial Python Developer</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 04 Mar 2019 10:56:42 -0800</lastBuildDate>
+    
+	<atom:link href="https://geopy.dev/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Using Python to Update ArcGIS Online Services</title>
+      <link>https://geopy.dev/use-python-to-update-arcgis-online-services/</link>
+      <pubDate>Mon, 04 Mar 2019 10:56:42 -0800</pubDate>
+      
+      <guid>https://geopy.dev/use-python-to-update-arcgis-online-services/</guid>
+      <description>The problem: It&amp;rsquo;s tough to keep an ever changing underground utility model up to date. It is especially difficult when your audience uses a variety of methods to access that data. The majority of my audience accesses this data via hosted PDFs but an ever growing group is now using ArcGIS Explorer and ArcGIS Collector on smartphones and tablets to access the same set of data.
+Since I manage the GIS data model of over ten types of utilities across multiple formats it was becoming quite common for a change to be made on my desktop but then either the PDF print or ArcGIS Online hosted data to be out of sync.</description>
+    </item>
+    
+    <item>
+      <title>CircuitPython on the ESP8266</title>
+      <link>https://geopy.dev/circuit-python-on-esp8266/</link>
+      <pubDate>Tue, 08 Jan 2019 07:43:09 -0800</pubDate>
+      
+      <guid>https://geopy.dev/circuit-python-on-esp8266/</guid>
+      <description>I&amp;rsquo;ve been enjoying circuit-python on my Hallowing and Circuit Playground Express boards but don&amp;rsquo;t really want to tie those up with any long term projects, so I decided to dust off my old ESP8266 Feather Huzzah to see if I could get that running circuit-python as well. Because it lacks built-in USB support, the Huzzah is a little more complicated to get going but really not bad as long as you don&amp;rsquo;t mind the command line.</description>
+    </item>
+    
+    <item>
+      <title>Render GeoJSON with Built-in Hugo Shortcode</title>
+      <link>https://geopy.dev/render-geojson-with-hugo-shortcode/</link>
+      <pubDate>Thu, 20 Dec 2018 14:15:12 -0800</pubDate>
+      
+      <guid>https://geopy.dev/render-geojson-with-hugo-shortcode/</guid>
+      <description>Can we use Hugo&amp;rsquo;s built-in shortcodes to render a map from GeoJSON?
+Hugo has a built-in shortcode to render gists and GitHub will show any GeoJSON saved as a gist as a map. So, let&amp;rsquo;s give it a go:
+ It works!
+Some relevant links:
+ Gist meets GeoJSON
+ geojson.io
+  </description>
+    </item>
+    
+    <item>
+      <title>Export ArcGIS Data Driven Pages &amp; Sync Using Python and Google Drive</title>
+      <link>https://geopy.dev/automate-export-to-pdf-of-arcgis-desktop-data-driven-pages/</link>
+      <pubDate>Thu, 20 Dec 2018 13:00:23 -0800</pubDate>
+      
+      <guid>https://geopy.dev/automate-export-to-pdf-of-arcgis-desktop-data-driven-pages/</guid>
+      <description>Quick Background: I work at UC Santa Barbara and one of my many jobs is to keep our underground utility atlas up to date. This atlas is accessed in multiple formats including PDF, desktop, and mobile applications. The campus atlas sheets are broken up to 500x500 foot grids which each represent a single sheet when printed or viewed as a PDF. The entire Santa Barbara campus makes up just over 300 of these grids.</description>
+    </item>
+    
+    <item>
+      <title>Notes to future me</title>
+      <link>https://geopy.dev/pauls-notes/</link>
+      <pubDate>Thu, 20 Dec 2018 12:27:11 -0800</pubDate>
+      
+      <guid>https://geopy.dev/pauls-notes/</guid>
+      <description>I haven&amp;rsquo;t updated this site in years, remind me: Make a new post:
+ hugo new post/pauls-notes.md
+ Update the posts metadata such as whether a draft and add tags
+  Run local server and include draft posts:
+ hugo server -D
+ then kill local server with Ctrl-C
+  Build site to github pages submodule:
+ remember you previously setup the submodule using these instructions.  Deploy Site:</description>
+    </item>
+    
+  </channel>
+</rss>

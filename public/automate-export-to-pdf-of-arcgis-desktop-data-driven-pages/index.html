@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <meta name="generator" content="Hugo 0.52" />
+
+  
+  <meta name="description" content="Geospatial Python Developer">
+  
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="https://geopy.dev/apple-touch-icon.png">
+
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="https://geopy.dev/favicon-32x32.png">
+
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="https://geopy.dev/favicon-16x16.png">
+
+  
+  <link rel="manifest" href="https://geopy.dev/site.webmanifest">
+
+  
+  <link rel="mask-icon" href="https://geopy.dev/safari-pinned-tab.svg" color="#5bbad5">
+
+  <meta name="msapplication-TileColor" content="#da532c">
+
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <link rel="stylesheet" href="https://geopy.dev/css/bootstrap.min.css" />
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+  
+  <title>Export ArcGIS Data Driven Pages &amp; Sync Using Python and Google Drive | Geospatial Python Developer</title>
+  
+
+  <style>
+body {
+  min-width: 300px;
+}
+
+.custom-navbar {
+  margin-bottom: 1em;
+  height: 60px;
+}
+
+.custom-navbar a {
+  display: inline-block; 
+  padding: 18px 0;
+  margin-right: 1em; 
+  font-weight: bold; 
+}
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  text-decoration: none; 
+}
+
+@media print {
+  .custom-navbar {
+    display: none;
+  }
+}
+
+article {
+  padding-bottom: 1em;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+body {
+  background-color: #fff;
+}
+
+
+
+body {
+  color: #212529;
+}
+
+
+
+a {
+  color: #007bff;
+}
+
+
+
+a:hover,
+a:focus {
+  color: #0056b3;
+}
+
+
+
+.custom-navbar {
+  background-color: #212529;
+}
+
+
+
+.custom-navbar a {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  color: rgba(255, 255, 255, 1);
+}
+
+
+
+.container {
+  max-width: 800px;
+}
+
+
+
+pre {
+  display: block;
+  padding: 9.5px;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit; 
+  white-space: pre-wrap;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+code {
+  padding: 2px 4px;
+  color: inherit; 
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: .9em;
+}
+
+
+
+blockquote,
+.blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 1em;
+  border-left: 5px solid #6c757d;
+}
+
+</style>
+</head>
+
+<body>
+  <nav class="custom-navbar">
+  <div class="container">
+    
+    <a href="/">Posts</a>
+    
+    <a href="/tags/">Tags</a>
+    
+    <a href="/about/">About</a>
+    
+    <a href="/index.xml"><i class="fas fa-rss fa-lg"></i></a>
+    <a href="https://github.com/pdbartsch"><i class="fab fa-github fa-lg"></i></a>
+    <a href="https://stackexchange.com/users/388677/paul"><i class="fab fa-stack-overflow fa-lg"></i></a>
+  </div>
+</nav>
+  
+  <div class="container">
+    <article>
+      <h3>Export ArcGIS Data Driven Pages &amp; Sync Using Python and Google Drive</h3>
+<p>
+  <small class="text-secondary">
+  
+  
+  Dec 20, 2018
+  </small>
+  
+<small><code><a href="https://geopy.dev/tags/arcpy">ArcPy</a></code></small>
+
+<small><code><a href="https://geopy.dev/tags/arcgis-desktop">ArcGIS-Desktop</a></code></small>
+
+<small><code><a href="https://geopy.dev/tags/google-drive">Google-Drive</a></code></small>
+
+<small><code><a href="https://geopy.dev/tags/python">Python</a></code></small>
+
+</p>
+
+
+<h3 id="quick-background">Quick Background:</h3>
+
+<p>I work at UC Santa Barbara and one of my many jobs is to keep our underground utility atlas up to date.  This atlas is accessed in multiple formats including PDF, desktop, and mobile applications.  The campus atlas sheets are broken up to 500x500 foot grids which each represent a single sheet when printed or viewed as a PDF.  The entire Santa Barbara campus makes up just over 300 of these grids. The data and sheet layout for these is currently broken up into two ArcMap documents, one representing main campus and one for west campus.</p>
+
+<h3 id="pdf-based-index-map">PDF Based Index Map:</h3>
+
+<p>One method of making these accessible to the people that need the data is a simple web map with the campus broken up into grids.  Each grid has a hyperlink to the corresponding PDF atlas sheet. The <a href="www.arcgis.com/apps/webappviewer/index.html?id=f378ea1bbbe34a2eae12793d24f08c66&amp;extent=-13344039.8359,4083428.4503,-13339453.6142,4085709.6178,102100">site is live here</a> (you won&rsquo;t be able to download atlas sheets unless you&rsquo;re an also an employee of UCSB).</p>
+
+<h3 id="the-problem">The Problem:</h3>
+
+<p>Keeping over 300 of these PDFs up to date in addition to keeping multiple other formats of the same data in sync became cumbersome.</p>
+
+<h3 id="my-solution">My Solution:</h3>
+
+<ol>
+<li>Host PDFs on Google Drive.  Sync hosted with desktop using Google File Stream App.</li>
+<li>Use ArcGIS Desktop data driven pages</li>
+<li>Export updated PDFs to local Google File Stream Folder which then stays in sync with the hosted file.  The hyperlink to these sheets remains the same because the file versions are changed but the files are not replaced with new files as long as the naming is consistent.</li>
+<li>Creat a Python script to automate the export of these PDFs</li>
+</ol>
+
+<h3 id="the-python-piece">The Python piece:</h3>
+
+<ul>
+<li>Python 2 because it still has to be to interact with ArcGIS Desktop.  I&rsquo;ll move this over to Pro at some point.</li>
+<li>Was initially multiple scripts. One for each of the MXD documents.  One set for printing all pages and another for printing a selection of pages.</li>
+<li>I recently simplified it to be one script which replaces all the functionality of the previous multiple by asking for more user input.</li>
+<li>The <a href="https://github.com/pdbartsch/geospatial-code-snippets/blob/master/dd_pages_export.py">code is available here</a> and also reproduced below. I commented it heavily and removed anything that needed to remain private to UCSB, so please go ahead and clone yourself a copy. Hopefully it can help you out with a similar task.</li>
+</ul>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Name: dd_pages_export.py  - Data Driven Page(s) to PDF</span>
+<span style="color:#75715e"># Description: exports either a single data Driven Page or all pages from a .mxd document to pdf(s). Replaces multiple previous scripts in favor of user input.</span>
+<span style="color:#75715e"># Author: Paul Bartsch  - updated December 2018</span>
+<span style="color:#75715e"># Intent: for use at UCSB to keep hosted PDF atlas sheets up to date with GIS data and ArcGIS Online Services (see other documents for help keeping online services in sync.)</span>
+<span style="color:#75715e"># Python 2 because this one is intended for use with ArcGIS Desktop maps that have not yet been imported to ArcGIS Pro</span>
+
+<span style="color:#75715e">## IMPORTS</span>
+<span style="color:#f92672">import</span> arcpy
+
+<span style="color:#75715e">## CONSTANTS</span>
+<span style="color:#75715e"># out_path</span>
+out_path <span style="color:#f92672">=</span> <span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;I:</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">My Drive</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">ATLAS</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">Atlas Export</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">&#34;</span> <span style="color:#75715e"># My Google File Stream Location</span>
+<span style="color:#75715e"># quality of the output pdf</span>
+quality <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;BEST&#34;</span> <span style="color:#75715e">#Options include: BEST BETTER NORMAL FASTER FASTEST</span>
+res <span style="color:#f92672">=</span> <span style="color:#ae81ff">150</span>
+<span style="color:#75715e"># two possible mxd documents. Each setup for data driven pages.</span>
+main <span style="color:#f92672">=</span> <span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;G:\GIS_Projects\Util_Atlas_Updates\Util_Atlas_Print_DO_NOT_EDIT.mxd&#34;</span>
+west <span style="color:#f92672">=</span> <span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;G:\GIS_Projects\Util_Atlas_Updates\Util_Atlas_West_Print_DO_NOT_EDIT.mxd&#34;</span>
+
+<span style="color:#75715e">## DEFAULTS</span>
+in_mxd <span style="color:#f92672">=</span> main
+out_prefix <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ucsbatlas&#34;</span>
+<span style="color:#75715e"># selects mxd of either default choice or west campus choice based on user input</span>
+
+<span style="color:#75715e">## USER INPUTS</span>
+<span style="color:#75715e"># py2 uses raw_input() and py3 uses input()</span>
+<span style="color:#75715e"># because of above this works for ArcGIS Desktop but would need adapting for ArcGIS Pro</span>
+mode <span style="color:#f92672">=</span> raw_input(<span style="color:#e6db74">&#34;Please select Mode: 1)Export All Mode or 2)Single Page Mode [1/2]? : &#34;</span>)
+
+<span style="color:#75715e">## DEFINE FUNCTIONS</span>
+<span style="color:#75715e"># export all data driven pages in chosen mxd document to PDF</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">export_multi</span>():
+    mxd <span style="color:#f92672">=</span> arcpy<span style="color:#f92672">.</span>mapping<span style="color:#f92672">.</span>MapDocument(in_mxd)
+    <span style="color:#75715e"># pc = mxd.dataDrivenPages.pageCount</span>
+    <span style="color:#66d9ef">for</span> pageNum <span style="color:#f92672">in</span> range(first, last):
+        mxd<span style="color:#f92672">.</span>dataDrivenPages<span style="color:#f92672">.</span>currentPageID <span style="color:#f92672">=</span> pageNum
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Exporting &#34;</span> <span style="color:#f92672">+</span>descrip<span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; page {0} of {1}&#34;</span><span style="color:#f92672">.</span>format(str(mxd<span style="color:#f92672">.</span>dataDrivenPages<span style="color:#f92672">.</span>currentPageID), str(last <span style="color:#f92672">-</span> first)))
+        arcpy<span style="color:#f92672">.</span>mapping<span style="color:#f92672">.</span>ExportToPDF(mxd, out_path <span style="color:#f92672">+</span> out_prefix <span style="color:#f92672">+</span> str(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%03d</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span> (pageNum)) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;.pdf&#34;</span>, resolution <span style="color:#f92672">=</span> res, image_quality <span style="color:#f92672">=</span> quality)
+    <span style="color:#75715e"># cleanup</span>
+    <span style="color:#66d9ef">del</span> mxd
+
+<span style="color:#75715e"># export a single page to PDF based on user input values</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">export_single</span>():
+    mxd <span style="color:#f92672">=</span> arcpy<span style="color:#f92672">.</span>mapping<span style="color:#f92672">.</span>MapDocument(in_mxd)
+    <span style="color:#75715e"># correct the number for use in file naming and messaging based on UCSB grid naming convention</span>
+    <span style="color:#75715e"># (e.g. we have a grid 001 and a grid W001)</span>
+    pg <span style="color:#f92672">=</span> int(grid)
+    <span style="color:#75715e"># export to pdf</span>
+    <span style="color:#75715e"># my workflow exports to a Google Drive File Stream location for automatic upload and</span>
+    <span style="color:#75715e"># update of an online atlas lookup that our employees use to access underground utility grids in PDF form.</span>
+    mxd<span style="color:#f92672">.</span>dataDrivenPages<span style="color:#f92672">.</span>currentPageID <span style="color:#f92672">=</span> page
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Exporting &#34;</span> <span style="color:#f92672">+</span> out_prefix <span style="color:#f92672">+</span> str(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%03d</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span> pg) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;.pdf to: &#34;</span> <span style="color:#f92672">+</span> out_path)
+    arcpy<span style="color:#f92672">.</span>mapping<span style="color:#f92672">.</span>ExportToPDF(mxd, out_path <span style="color:#f92672">+</span> out_prefix <span style="color:#f92672">+</span> str(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%03d</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span> pg) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;.pdf&#34;</span>, resolution <span style="color:#f92672">=</span> res, image_quality <span style="color:#f92672">=</span> quality)
+    <span style="color:#75715e"># cleanup</span>
+    <span style="color:#66d9ef">del</span> mxd
+
+<span style="color:#75715e"># logic based on user input choices</span>
+<span style="color:#66d9ef">if</span> mode <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;1&#39;</span>:
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;All&#39;</span>)
+    area <span style="color:#f92672">=</span> raw_input(<span style="color:#e6db74">&#34;Please select either: 1)Main Campus or 2)West Campus. [1/2]? : &#34;</span>)
+    single <span style="color:#f92672">=</span> False
+<span style="color:#66d9ef">elif</span> mode <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;2&#39;</span>:
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;single page mode&#39;</span>)
+    area <span style="color:#f92672">=</span> raw_input(<span style="color:#e6db74">&#34;Please select either: 1)Main Campus or 2)West Campus. [1/2]? : &#34;</span>)
+    grid <span style="color:#f92672">=</span> raw_input(<span style="color:#e6db74">&#34;Please enter a single grid # to export : &#34;</span>)
+    single <span style="color:#f92672">=</span> True
+<span style="color:#66d9ef">else</span>:
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;That&#39;s not an option.  Exiting script now.  Simply run script again to try again.&#34;</span>)
+    exit()
+
+<span style="color:#75715e"># set variables and run appropriate function based on user choices</span>
+<span style="color:#66d9ef">if</span> single <span style="color:#f92672">and</span> area <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;2&#39;</span>: <span style="color:#75715e"># west campus single mode</span>
+    in_mxd <span style="color:#f92672">=</span> west
+    out_prefix <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ucsbatlasW&#34;</span>
+    page <span style="color:#f92672">=</span> int(grid) <span style="color:#f92672">+</span> <span style="color:#ae81ff">118</span> <span style="color:#75715e">#correct the number based on UCSB grid naming convention</span>
+    export_single()
+<span style="color:#66d9ef">elif</span> single: <span style="color:#75715e"># main campus single mode</span>
+    <span style="color:#75715e"># because Python 2 raw_input is a string</span>
+    <span style="color:#75715e"># go with defaults other than that</span>
+    page <span style="color:#f92672">=</span> int(grid)
+    export_single()
+<span style="color:#66d9ef">elif</span> <span style="color:#f92672">not</span> single <span style="color:#f92672">and</span> area <span style="color:#f92672">==</span><span style="color:#e6db74">&#39;2&#39;</span>: <span style="color:#75715e"># west campus print all</span>
+    in_mxd <span style="color:#f92672">=</span> west
+    out_prefix <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ucsbatlasW&#34;</span>
+    first <span style="color:#f92672">=</span> <span style="color:#ae81ff">119</span>
+    last <span style="color:#f92672">=</span> <span style="color:#ae81ff">328</span>
+    descrip <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;West Campus Atlas &#39;</span>
+    export_multi()
+<span style="color:#66d9ef">else</span>: <span style="color:#75715e"># main campus print all</span>
+    first <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+    last <span style="color:#f92672">=</span> <span style="color:#ae81ff">119</span>
+    descrip <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Main Campus Atlas &#39;</span>
+    export_multi()</code></pre></div>
+
+    </article>
+  </div>
+
+  
+  
+  
+  <script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-135562926-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+</body>
+
+</html>
