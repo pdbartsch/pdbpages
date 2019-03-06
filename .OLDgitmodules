@@ -2,3 +2,9 @@
 	path = public
 	url = git@github.com:pdbartsch/pdbartsch.github.io.git
 	branch = master
+
+
+[submodule "public"]
+	path = public
+	url = git@github.com:pdbartsch/pdbartsch.github.io.git
+	branch = master
