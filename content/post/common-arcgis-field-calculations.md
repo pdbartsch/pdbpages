@@ -3,7 +3,7 @@ title: "Common Field Calculations in ArcGIS"
 date: 2019-03-06T08:21:04-08:00
 publishdate: 2019-03-06
 lastmod: 2019-03-06
-draft: true
+draft: false
 tags: ['ArcGIS-Desktop', 'Python']
 ---
 
