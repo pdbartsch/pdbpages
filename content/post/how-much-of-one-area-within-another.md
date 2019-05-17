@@ -7,7 +7,7 @@ draft: false
 tags: ['ArcGIS-Desktop', 'Python']
 ---
 
-{{< figure src="/img/turfarea.png" title="Turf area per maintenance area" >}}
+{{< figure src="/img/turfarea.png" title="Showing turf over maintenance areas." >}}
 
 ### A: Python in ArcGIS Pro:
 
